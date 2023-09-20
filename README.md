@@ -1,2 +1,1 @@
-# Livraria-Node.Js-API-Rest-Express-MongoDB-# API-Compras
-# APICompras
+#API de Compras: vendas -> pagamento -> carrinho
