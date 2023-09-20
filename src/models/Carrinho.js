@@ -12,8 +12,6 @@ const carrinhoSchema = new mongoose.Schema(
     versionKey: false,
   }
 );
-
-const carrinho = mongoose.model('carrinho', carrinhoSchema);
-
+const carrinho = mongoose.model('carrinhos', carrinhoSchema);
 export default carrinho;
 
