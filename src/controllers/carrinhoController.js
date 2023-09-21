@@ -4,19 +4,15 @@ import vendas from '../models/Vendas.js';
 class CarrinhoController {
 
   static listarCarrinho = async (req, res) => {
-    const carrinhoItens = await carrinho.find({});
-    const nomesDasVendas = [];
-
-    await Promise.all(
-      carrinhoItens.map(async (item) => {
-        const venda = await vendas.findById(item.vendas);
-        if (venda) {
-          nomesDasVendas.push(venda.nome);
-        }
-      })
-    );
-    res.status(200).json({ nomesDasVendas });
+    try {
+      const carrinhosComVendas = await carrinho.find().populate('vendas');
+      const nomesDasVendas = carrinhosComVendas.map((carrinho) => carrinho.vendas.nome);
+      res.status(200).json({ nomesDasVendas });
+    } catch (err) {
+      res.status(500).json({ error: 'Erro ao listar vendas no carrinho.' });
+    }
   };
+
 
 
 

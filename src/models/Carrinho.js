@@ -10,6 +10,7 @@ const carrinhoSchema = new mongoose.Schema(
   },
   {
     versionKey: false,
+    collection: 'carrinhos'
   }
 );
 const carrinho = mongoose.model('carrinhos', carrinhoSchema);
