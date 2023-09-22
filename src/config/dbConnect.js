@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 // Configuração da conexão com o MongoDB
-mongoose.connect('mongodb+srv://compras:12345@cluster0.5amzhy8.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://karinnylemos:250250@cluster0.oykppr8.mongodb.net/?retryWrites=true&w=majority', {
 
   useNewUrlParser: true,
   useUnifiedTopology: true,

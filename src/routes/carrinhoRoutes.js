@@ -5,6 +5,7 @@ const router = express.Router();
 router
   .get('/carrinho', CarinhoController.listarCarrinho)
   .post('/carrinho/adicionar', CarinhoController.adicionarAoCarrinho)
+  .delete('/carrinho/remover', CarinhoController.removerVendaDoCarrinho)
 // .get('/carrinho/:id', CarinhoController.listarVendasPorId)
 // .post('/carrinho', CarinhoController.adicionarAoCarrinho)
 // .put('/carrinho/:id', CarinhoController.atualizarVendas)
