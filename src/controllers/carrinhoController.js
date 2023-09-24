@@ -26,10 +26,21 @@ export default class CarrinhoController {
   };
 
   static async listarCarrinho(req, res) {
-
     try {
       const carrinho = await Carrinho.findById('650d960c6d226c5e144cae97');
-      res.status(200).json({ vendasAdicionadas: carrinho.vendasAdicionadas });
+      if (!carrinho) {
+        return res.status(404).json({ error: 'Carrinho não encontrado.' });
+      }
+
+      const vendasIds = carrinho.vendasAdicionadas.map(vendaId => Vendas.findById(vendaId));
+      const vendasPromises = await Promise.all(vendasIds);
+
+      const vendasAdicionadas = vendasPromises.filter(venda => venda).map(venda => ({
+        id: venda._id,
+        nome: venda.nome,
+      }));
+
+      res.status(200).json({ vendasAdicionadas });
     } catch (err) {
       res.status(500).json({ error: 'Erro ao listar o carrinho.' });
     }
