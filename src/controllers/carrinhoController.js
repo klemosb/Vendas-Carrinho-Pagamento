@@ -47,23 +47,32 @@ export default class CarrinhoController {
   }
   static removerVendaDoCarrinho = async (req, res) => {
     try {
-      const { vendaId } = req.params;
+      const vendaId = req.params.vendaId;
 
-      const carrinho = await carrinho.findOne({});
+      if (!vendaId) {
+        return res.status(400).json({ error: 'ID da venda não fornecido.' });
+      }
+
+      const carrinho = await Carrinho.findById('650d960c6d226c5e144cae97');
+
       if (!carrinho) {
         return res.status(404).json({ error: 'Carrinho não encontrado.' });
       }
 
-      // Remover a venda pelo ID do carrinho
-      carrinho.vendas = carrinho.vendas.filter((id) => id.toString() !== vendaId);
+      const updatedVendasAdicionadas = carrinho.vendasAdicionadas.filter((venda) =>
+        venda.toString() !== vendaId
+      );
 
+      carrinho.vendasAdicionadas = updatedVendasAdicionadas;
       await carrinho.save();
 
       res.status(200).json({ message: 'Venda removida do carrinho com sucesso.' });
     } catch (err) {
       res.status(500).json({ error: 'Erro ao remover a venda do carrinho.' });
     }
-  }
+  };
+
+
 
 
 };
