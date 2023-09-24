@@ -1,18 +1,19 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const carrinhoSchema = new mongoose.Schema(
   {
-    vendas: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'vendas',
-      required: true,
-    }
+    vendasAdicionadas: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'vendas',
+      },
+    ],
   },
   {
     versionKey: false,
-    collection: 'carrinhos'
+    collection: 'carrinhos',
   }
 );
-const carrinho = mongoose.model('carrinhos', carrinhoSchema);
-export default carrinho;
 
+const Carrinho = mongoose.model('carrinhos', carrinhoSchema);
+export default Carrinho; 

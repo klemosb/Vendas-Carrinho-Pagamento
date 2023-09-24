@@ -3,18 +3,15 @@ import mongoose from 'mongoose';
 const vendasSchema = new mongoose.Schema(
   {
     nome: { type: String, required: true },
-    pagamento: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'pagamento',
-      required: true,
-    }
+    quantidade: { type: Number, required: true }
   },
   {
     versionKey: false,
+    collection: 'vendas'
   }
 );
 
-const vendas = mongoose.model('vendas', vendasSchema);
+const Vendas = mongoose.model('vendas', vendasSchema);
 
-export default vendas;
+export default Vendas;
 

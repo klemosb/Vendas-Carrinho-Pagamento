@@ -1,9 +1,10 @@
-import pagamento from '../models/Pagamento.js';
-import vendas from '../models/Vendas.js';
+// import pagamento from '../models/Pagamento.js';
+// import Carrinho from '../models/Carrinho.js';
+import Vendas from '../models/Vendas.js';
 
-class VendasController {
+export default class VendasController {
   static listarVendas = (req, res) => {
-    vendas.find((err, vendas) => {
+    Vendas.find((err, vendas) => {
       res.status(200).json(vendas)
     })
     // vendas.populate('vendas')
@@ -11,7 +12,7 @@ class VendasController {
 
   static listarVendasPorId = (req, res) => {
     const id = req.params.id;
-    vendas.findById(id, (err, vendas) => {
+    Vendas.findById(id, (err, vendas) => {
       if (err) {
         res
           .status(400)
@@ -23,22 +24,24 @@ class VendasController {
   };
 
   static cadastrarVendas = (req, res) => {
-    let novaVenda = new vendas(req.body);
-    novaVenda.save((err) => {
+    let novaVenda = new Vendas(req.body);
+    novaVenda.save((err, venda) => {
       if (err) {
         res
           .status(500)
           .send({ message: `${err.message} - falha ao cadastrar venda.` });
       } else {
-        res.status(201).send(novaVenda.toJSON());
+        res.status(201).send({ message: 'Venda cadastrada com sucesso.', vendaId: venda._id });
+
       }
     });
+
   };
 
   static atualizarVendas = (req, res) => {
     const id = req.params.vendas;
     console.log(id)
-    vendas.findByIdAndUpdate(id, { $set: req.body }, (err) => {
+    Vendas.findByIdAndUpdate(id, { $set: req.body }, (err) => {
       if (!err) {
         res.status(200).send({ message: 'Vendas atualizado com sucesso' });
       } else {
@@ -50,7 +53,7 @@ class VendasController {
   static excluirVendas = (req, res) => {
     const id = req.params.id;
 
-    vendas.findByIdAndDelete(id, (err) => {
+    Vendas.findByIdAndDelete(id, (err) => {
       if (!err) {
         res.status(200).send({ message: 'Venda(s) removida(s) com sucesso' });
       } else {
@@ -60,4 +63,4 @@ class VendasController {
   };
 
 };
-export default VendasController;
+

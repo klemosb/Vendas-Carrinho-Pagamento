@@ -1,63 +1,60 @@
-import carrinho from '../models/Carrinho.js';
-import vendas from '../models/Vendas.js';
+import mongoose from 'mongoose';
+import Carrinho from '../models/Carrinho.js';
+import Vendas from '../models/Vendas.js';
 
-class CarrinhoController {
+export default class CarrinhoController {
 
-  static listarCarrinho = async (req, res) => {
+  static adicionarAoCarrinho = async (req, res) => {
+    try {
+      const vendaId = req.body.vendaId;
 
-    const carrinhoItens = await carrinho.find({});
-    const nomesDasVendas = [];
+      const venda = await Vendas.findById(vendaId);
 
-    await Promise.all(
-      carrinhoItens.map(async (item) => {
-        const venda = await vendas.findById(item.vendas);
-        if (venda) {
-          nomesDasVendas.push(venda.nome);
-        }
-      })
-    );
-    res.status(200).json({ nomesDasVendas });
-  };
-
-
-
-
-  static adicionarAoCarrinho = (req, res) => {
-    const vendaId = req.body.vendas;
-    vendas.findById(vendaId, (err, venda) => {
-      if (err) {
-        return res.status(500).json({ error: 'Erro ao buscar a venda.' });
-      }
       if (!venda) {
         return res.status(404).json({ error: 'Venda não encontrada.' });
       }
-      const nomeVenda = venda.nome;
-      res.status(200).json({ nomeVenda });
-    });
-  };
 
-
-  static removerVendaDoCarrinho = async (req, res) => {
-    try {
-      const vendaId = req.query.vendaId;
-
-      if (!carrinho.vendas.includes(vendaId)) {
-        return res.sendStatus(404); // Venda não encontrada no carrinho
-      }
-
-      carrinho.vendas.pull(vendaId);
+      const carrinho = await Carrinho.findById('650d960c6d226c5e144cae97');
+      carrinho.vendasAdicionadas.push(venda);
       await carrinho.save();
 
-      res.sendStatus(200); // Venda removida com sucesso
+      const nomeVenda = venda.nome;
+      res.status(200).json({ nomeVenda });
     } catch (err) {
-      res.sendStatus(500); // Erro ao remover a venda do carrinho
+      res.status(500).json({ error: 'Erro ao adicionar a venda no carrinho.' });
     }
   };
 
-}
+  static async listarCarrinho(req, res) {
+
+    try {
+      const carrinho = await Carrinho.findById('650d960c6d226c5e144cae97');
+      res.status(200).json({ vendasAdicionadas: carrinho.vendasAdicionadas });
+    } catch (err) {
+      res.status(500).json({ error: 'Erro ao listar o carrinho.' });
+    }
+  }
+  static removerVendaDoCarrinho = async (req, res) => {
+    try {
+      const { vendaId } = req.params;
+
+      const carrinho = await carrinho.findOne({});
+      if (!carrinho) {
+        return res.status(404).json({ error: 'Carrinho não encontrado.' });
+      }
+
+      // Remover a venda pelo ID do carrinho
+      carrinho.vendas = carrinho.vendas.filter((id) => id.toString() !== vendaId);
+
+      await carrinho.save();
+
+      res.status(200).json({ message: 'Venda removida do carrinho com sucesso.' });
+    } catch (err) {
+      res.status(500).json({ error: 'Erro ao remover a venda do carrinho.' });
+    }
+  }
 
 
+};
 
 
-
-export default CarrinhoController;

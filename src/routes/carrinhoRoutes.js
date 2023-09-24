@@ -1,14 +1,13 @@
 import express from 'express';
-import CarinhoController from '../controllers/carrinhoController.js';
+import CarrinhoController from './src/controllers/CarrinhoController.js';
+
 
 const router = express.Router();
-router
-  .get('/carrinho', CarinhoController.listarCarrinho)
-  .post('/carrinho/adicionar', CarinhoController.adicionarAoCarrinho)
-  .delete('/carrinho/remover', CarinhoController.removerVendaDoCarrinho)
-// .get('/carrinho/:id', CarinhoController.listarVendasPorId)
-// .post('/carrinho', CarinhoController.adicionarAoCarrinho)
-// .put('/carrinho/:id', CarinhoController.atualizarVendas)
-// .delete('/carrinho/:id', CarinhoController.excluirVendas);
+
+
+router.get('/carrinho', CarrinhoController.listarCarrinho);
+router.post('/carrinho/adicionar', CarrinhoController.adicionarAoCarrinho);
+router.delete('/carrinho/remover/:id', CarrinhoController.removerVendaDoCarrinho);
+
 
 export default router;
