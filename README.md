@@ -1,6 +1,6 @@
 # API de Compras: vendas -> pagamento -> carrinho
 ### A API foi criada usando no backend o Node.js e o banco de dados Mongo.JS. Para visualizar e manipular os dados recomenda-se o uso do POSTAMAN ou INSOMNIA. 
-## 🚀 Começando
+## 🔧Começando
 - Faça o download do repositório através do arquivo zip ou do terminal usando o git clone;
 - Acesse o diretório do projeto pelo seu terminal;
 - Rode o comando  ``` npm install ```
@@ -14,5 +14,14 @@
 * http://localhost:27017/vendas
 * http://localhost:27017/pagamento
 
+
+## 🚀 Como usar:
+### Fluxo principal: Crie uma venda -> Adicione essa venda ao carrinho -> Veja o seu carrinho completo com as vendas dentro!! ❤️
+### Além disso você ainda consegue: 
+* Buscar vendas gerais
+* Buscar vendas por ID
+* Atualizar e atualizar vendas
+* Cadastre e modifique todos os dados de pagamento
+* Adicione, remova e liste todas as vendas do seu carrinho!
 
 
