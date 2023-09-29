@@ -1,5 +1,6 @@
 # API de Compras: Vendas -> Pagamento -> Carrinho
-### A API foi criada usando no backend o Node.js e o banco de dados Mongo.JS. Para visualizar e manipular os dados recomenda-se o uso do POSTAMAN ou INSOMNIA. 
+### A API foi criada usando no backend o Node.js e o banco de dados Mongo.JS
+### Para visualizar e manipular os dados é recomendado o uso do POSTMAN ou do INSOMNIA. 
 ## 🔧Começando
 - Faça o download do repositório através do arquivo zip ou do terminal usando o git clone;
 - Acesse o diretório do projeto pelo seu terminal;
