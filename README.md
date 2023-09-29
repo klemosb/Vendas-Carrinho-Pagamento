@@ -5,7 +5,7 @@
 - Acesse o diretório do projeto pelo seu terminal;
 - Rode o comando  ``` npm install ```
 - Rode o comando ``` npm init ``` para inicializar o npm dentro do projeto. É necessário ter o Noje.js instalado para executar este projeto.
-- Rode o comando ```node server.js```` para rodar a aplicação na aplicação. 
+- Rode o comando ``` npm start ``` ou ``` node server.js ``` para rodar a aplicação na aplicação. 
 - Abra o arquivo em seu navegador.
 - Dentro da pasta do projeto existe uma collection chamada "Compras.postman_collection", arraste ela até o software POSTMAN para fazer as manipulações da API.
 
