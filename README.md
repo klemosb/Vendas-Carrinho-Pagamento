@@ -10,9 +10,9 @@
 - Dentro da pasta do projeto existe uma collection chamada "Compras.postman_collection", arraste ela até o software POSTMAN para fazer as manipulações da API.
 
 ## ⚙️ Principais rotas:
-http://localhost:27017/carrinho
-http://localhost:27017/vendas
-http://localhost:27017/pagamento
+* http://localhost:27017/carrinho
+* http://localhost:27017/vendas
+* http://localhost:27017/pagamento
 
 
 
