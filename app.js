@@ -12,5 +12,6 @@ db.once('open', () => {
 const app = express();
 app.use(express.json()); // Faz interpretar o que está chegando via POST ou PUT
 app.use(router); // Use o router diretamente aqui
+app.use(express.static('public'))
 
 export default app;
