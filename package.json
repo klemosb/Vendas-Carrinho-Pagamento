@@ -4,15 +4,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "build":  "webpack --config webpack.conf.js"
+    "watch": "webpack --watch",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "dependencies": {
     "express": "^4.18.1",
     "mongodb": "^6.0.0",
@@ -27,5 +26,8 @@
     "url": "https://github.com/karinnylemosb/Livraria-Node.Js-API-Rest-Express-MongoDB-/issues"
   },
   "homepage": "https://github.com/karinnylemosb/Livraria-Node.Js-API-Rest-Express-MongoDB-#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
 }
