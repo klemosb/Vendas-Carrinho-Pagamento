@@ -6,14 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-  
-    "build":"npm install && npm run build-server",
+    "build": "npm install && npm run build-server",
     "build-server": "echo 'Building server' && npm run compile-server"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "build": "^0.1.4",
     "express": "^4.18.1",
     "mongodb": "^6.0.0",
     "mongoose": "^6.12.0",
