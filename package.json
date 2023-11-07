@@ -6,8 +6,10 @@
   "scripts": {
 
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  }, "keywords": [],
+    "start": "node server.js",
+    "build":  "webpack --config webpack.conf.js"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
 
