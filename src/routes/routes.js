@@ -1,8 +1,8 @@
 import express from 'express';
 import CarrinhoController from '../controllers/carrinhoController.js';
-// import VendasController from '../controllers/VendasController.js';
-import PagamentoController from '../controllers/pagController.js'
-import VendasController from '../controllers/VendasController.js'
+import PagamentoController from '../controllers/pagController.js';
+
+import VendasController from '../controllers/vendasController.js';
 
 
 const router = express.Router();
